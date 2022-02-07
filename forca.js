@@ -1,8 +1,9 @@
 desenhaForca();
 var p=0;
+var word=''
 var botaoIniciar = document.querySelector("#iniciar-jogo");
 botaoIniciar.addEventListener("click", function(event){
-  var word = buscaPalavra();
+  word = buscaPalavra();
   letras=split(word);
   espacos=letras.length;
   console.log(word);
@@ -23,7 +24,8 @@ botaoNovaPalavra.addEventListener("click", function(event){
   event.preventDefault();
   var areaLetra=document.querySelector("#input-nova-palavra");
   letra=areaLetra.value;
-  verificaLetra(letra);
+  letra=letra.toUpperCase();
+  verificaLetraPalavra(letra,word);
   var form = document.querySelector("input-nova-palavra");
   areaLetra.value='';
 
@@ -37,13 +39,11 @@ botaoNovaPalavra.addEventListener("click", function(event){
        n=n+1;
      }
    }
-   console.log(n);
    if(n==0){
      desenhaMan(p);
-     console.log(p);
+     addLetraErrada(p,letra);
      p=p+1;
    }
-   console.log(index, letra);
    addLetraPos(index, letra);
  };
 
@@ -74,4 +74,20 @@ botaoNovaPalavra.addEventListener("click", function(event){
    }
 
 
+ }
+
+ function verificaLetraPalavra(letra,word){
+   if(letra.length==1){
+     verificaLetra(letra);
+   }
+   else{
+        if(word===letra){
+          //GAnhou finaliza
+        }
+        else{
+          console.log(letra, word);
+          //palavra errada
+        }
+
+   }
  }
