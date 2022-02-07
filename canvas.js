@@ -3,7 +3,6 @@ var tela = document.querySelector('canvas');
 var pincel = tela.getContext('2d');
 function desenhaRetangulo(x,y){
   pincel.fillStyle="black";
-  console.log(x, y);
   pincel.lineWidth=1;
   pincel.strokeRect(x, y, 50,50);
 
@@ -19,16 +18,20 @@ function addLetra(letra, x,y){
   pincel.fillStyle='black';
   pincel.font='40px serif';
   pincel.fillText(letra,x,y);
-  console.log("Oi");
 }
 
 function addLetraPos(index, letra){
   for(var j=0;j<index.length; j++){
     x=60+(index[j]*50);
-    console.log(index[j]);
     addLetra(letra, x,590);
   }
 };
+
+function addLetraErrada(p, letra){
+  var x= 500+(50*p);
+  var y=300
+  addLetra(letra,x, y);
+}
 
 function desenhaForca() {
   pincel.fillStyle="black";
@@ -39,8 +42,6 @@ function desenhaForca() {
   pincel.lineTo(250,75);
   pincel.lineWidth=15;
   pincel.stroke();
-  console.log("oi");
-
 }
 
 function desenhaCabeca(){
@@ -97,5 +98,5 @@ function desenhaPernaDireita(){
 }
 function clearCanvas(){
   pincel.clearRect(100,75,250,300);
-  
+
 }
