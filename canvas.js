@@ -33,6 +33,15 @@ function addLetraErrada(p, letra){
   addLetra(letra,x, y);
 }
 
+function messagemVenceu(){
+  addLetra("Você venceu!",500, 200);
+}
+function mensagemPerdeu(word){
+  var msg= "A palavra era "+word;
+  addLetra("Você perdeu!", 450, 200);
+  addLetra(msg, 350, 240);
+}
+
 function desenhaForca() {
   pincel.fillStyle="black";
   pincel.beginPath();
