@@ -1,5 +1,6 @@
 desenhaForca();
 var p=0;
+var count=0;
 var word=''
 var botaoIniciar = document.querySelector("#iniciar-jogo");
 botaoIniciar.addEventListener("click", function(event){
@@ -37,12 +38,16 @@ botaoNovaPalavra.addEventListener("click", function(event){
      if(letra==letras[i]){
        index[n]=i;
        n=n+1;
+       count=count+1;
      }
    }
    if(n==0){
      desenhaMan(p);
      addLetraErrada(p,letra);
      p=p+1;
+   }
+   if(count==letras.length){
+     messagemVenceu();
    }
    addLetraPos(index, letra);
  };
@@ -67,13 +72,8 @@ botaoNovaPalavra.addEventListener("click", function(event){
    }
    else if(p==5){
      desenhaPernaEsquerda();
-
+    mensagemPerdeu(word);
    }
-   else{
-     console.log("perdeu");
-   }
-
-
  }
 
  function verificaLetraPalavra(letra,word){
@@ -82,12 +82,21 @@ botaoNovaPalavra.addEventListener("click", function(event){
    }
    else{
         if(word===letra){
-          //GAnhou finaliza
+          messagemVenceu();
+          mostraPalavra(word);
         }
         else{
-          console.log(letra, word);
-          //palavra errada
+          alert("Não é a palavra correta. Tente mais uma vez");
         }
 
+   }
+ }
+
+ function mostraPalavra(word){
+   console.log(word);
+   word=word.split('');
+   for(var i=0;i<word.length;i++){
+     var x=60+(i*50);
+     addLetra(word[i],x,590)
    }
  }
