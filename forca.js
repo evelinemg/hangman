@@ -4,14 +4,14 @@ var count=0;
 var word=''
 var botaoIniciar = document.querySelector("#iniciar-jogo");
 botaoIniciar.addEventListener("click", function(event){
+  pincel.clearRect(0, 0, 800, 600);
+  desenhaForca();
   word = buscaPalavra();
   letras=split(word);
   espacos=letras.length;
   console.log(word);
   quantidadeRetangulos(50,550, espacos);
   p=0;
-  clearCanvas();
-
 });
 
 function split(word){
